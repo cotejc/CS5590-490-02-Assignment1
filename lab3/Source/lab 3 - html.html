@@ -1,0 +1,93 @@
+<!--#Lab Assignment #3-->
+<!--HTML File-->
+<!--Jeremiah Cote - 12387498 - user id #1-->
+<!--6/29/2017-->
+<!DOCTYPE html>
+<!--This is the type of file this is-->
+<html lang="en">
+<!--This is the language of the page-->
+<head>
+    <!--This is the header section of the page-->
+    <meta charset="utf-8">
+    <!--This is to use the utf-8 character set-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--This is from bootstrap to ensure that IE edge is compatabile and resizes correctly-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--This is to ensure the device this is opened on works correctly-->
+
+    <title>Github user finder</title>
+    <!--This is the title of the html page-->
+
+    <link href="https://bootswatch.com/simplex/bootstrap.min.css" rel="stylesheet">
+    <!--This is the bootstrap core css used within this html page-->
+    <link rel = "styelsheet" href = "style.css">
+    <!--This is the name of the css we will use for this page, this is the custom part of css that we will use-->
+</head>
+<!--This is to end the head section of the page-->
+
+<body>
+<!--This is begins the body part of the html page-->
+<nav class="navbar navbar-inverse">
+    <!--This is the navbar imported from bootstrap-->
+    <div class="container">
+        <!--This is to label this div class as container for use within javascript-->
+        <div class="navbar-header">
+            <!--This is label the class of this div element to be called within bootstrap-->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <!--This is imported from bootstrap for the navbar function-->
+                <span class="sr-only">Toggle navigation</span>
+                <!--This is all imported from bootstrap for the navbar function-->
+                <span class="icon-bar"></span>
+                <!--This is imported from bootstrap for the navbar and to label the different classes-->
+                <span class="icon-bar"></span>
+                <!--This is imported from bootstrap for the navbar and to label the different classes-->
+                <span class="icon-bar"></span>
+                <!--This is imported from bootstrap for the navbar and to label the different classes-->
+            </button>
+            <!--This is end the button element-->
+            <a class="navbar-brand" href="#">Github user finder</a>
+            <!--This is to label what our navbar will be titled as-->
+        </div>
+        <!--This is to end the div element-->
+        <div id="navbar" class="collapse navbar-collapse">
+            <!--This is imported from bootstrap for the navbar and to have the navbar collapse-->
+            <ul class="nav navbar-nav">
+                <!--This is to list the navbar and to identify its class for future call elemtns-->
+            </ul>
+            <!--This is to close the list elements-->
+        </div>
+        <!--This is to close the div element-->
+    </div>
+    <!--This is to close the div element-->
+</nav>
+<!--This is to close the navbar elements-->
+
+<div class="container">
+    <!--This is to label this div element with a class-->
+    <div class="searchContainer">
+        <!--This is to label this div element with a class-->
+        <h1>Search Github Users</h1>
+        <!--This is to label this to label the main search for the page-->
+        <p class="lead">Enter a username to fetch a users profile info and repos</p>
+        <!--This is directions for how the user can use the page-->
+        <input type = "text" id = "searchUser" class = "form-control" placeholder = "Github username">
+        <!--This have the input with a palceholder so as they enter information it will be identified-->
+    </div>
+    <!--This is to close the div element-->
+    <br>
+    <!--This is for a line break-->
+    <div id = "profile"></div>
+    <!--This is tto id tht div element as well as close it in the same line-->
+</div>
+<!--This is to label this is div element-->
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src = "jscript.js"></script>
+<!--The above are bootstrap, javascript, jqueery, and other featuers used within this page that are called to ensure this page works-->
+</body>
+<!--This is end the body-->
+</html>
+<!--This is to end the html page-->
