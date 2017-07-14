@@ -1,0 +1,553 @@
+#Jeremiah Cote
+#User Id -1
+#Assignment/Lab 5
+#Part A - Library Resource Management System
+#13 July 2017
+
+print("This is a program as a Library Resource Management System.\n")
+class Person:
+    #This is the first class of Person.  This will be used to Identify the person in the resource managment system
+    def __init__(self, firstname, lastname):
+        #This is the constructor, self needs to be included as this is object oriented, first name and last name are used to determine the input for the user
+        self.firstname = input("Please enter first Name:")
+        #This is to get input for the users first name
+        self.lastname = input("Please enter last Name:")
+        #This is to get input for the users last name
+    def displayPerson(self):
+        #This is used to define the function to display the inputs into the contents of the class
+        print ("First Name : ", self.firstname, ",Last Name: ", self.lastname)
+        #This is to print the contacts of the uses input within this class and it displays it to the screen to see
+
+class Student(Person):
+    #This is the second class of Student, but it is also used as an inhertiance from the Person class
+    def __init__(self, stud):
+        #This is the constructor used to determine the input for whether the person is a student or no
+        self.stud = input("Are you a student, enter yes or no:")
+        #This to identify the input answer for this class and to put it as a reference to itself.  This way when it is called it will identify what this vaule is
+    def displayStudent(self):
+        #This is used to define the function to display the inputs into the contents of the class
+        print ("Student: ", self.stud)
+        #This is to print the contacts of the uses input within this class and it displays it to the screen to see
+
+class Librarian(Person):
+    # This is the third class of Librarian, but it is also used as an inhertiance from the Person class
+    def __init__(self, lib):
+        # This is the constructor used to determine the input for whether the person is a student or no
+        self.lib = input("Enter the Librarian's name:")
+        #This to identify the input answer for this class and to put it as a reference to itself.  This way when it is called it will identify what this vaule is
+    def displayLibrarian(self):
+        #This is used to define the function to display the inputs into the contents of the class
+        print ("Librarian: ", self.lib)
+        #This is to print the contacts of the uses input within this class and it displays it to the screen to see
+
+class __Fees:
+    # This is the fourth class of Fees, but it is also a private member
+    def __init__(self, owed):
+        # This is the constructor used to determine the input for whether the person is a student or no
+        self.owed = input("Do you owe any fees?:")
+        #This to identify the input answer for this class and to put it as a reference to itself.  This way when it is called it will identify what this vaule is
+    def displayFees(self):
+        #This is used to define the function to display the inputs into the contents of the class
+        print("Fees Owed: ", self.owed)
+        #This is to print the contacts of the uses input within this class and it displays it to the screen to see
+
+class Booklimit:
+    # This is the fifth class of Booklimit
+    def __init__(self, limit):
+        # This is the constructor used to determine the input for whether the person is a student or no
+        self.limit = input("Enter the name of the book checking out:")
+        #This to identify the input answer for this class and to put it as a reference to itself.  This way when it is called it will identify what this vaule is
+    def displayBooklimit(self):
+        #This is used to define the function to display the inputs into the contents of the class
+        print("Name of book checking out:", self.limit)
+        #This is to print the contacts of the uses input within this class and it displays it to the screen to see
+
+class Books(Student, Librarian):
+    # This is the sixth class of Booklimit and also used as a multiple inheritance of the class person
+    def __init__(self, mul):
+        # This is the constructor used to determine the input for whether the person is a student or no
+        self.mul = input("EPlease re-verify if the Person is a student and the Librarian's name:")
+        #This to identify the input answer for this class and to put it as a reference to itself.  This way when it is called it will identify what this vaule is
+    def displayBooks(self):
+        # This is used to define the function to display the inputs into the contents of the class
+        print("Student and Librarian Name:", self.mul)
+        #This is to print the contacts of the uses input within this class and it displays it to the screen to see
+
+
+class Manager(Person):
+    pass
+manager1= Manager("D Z, Z", 2000)
+#This is used to have an ineritance to pass through and to output the information at a specific location.  It is passed we are only interested in getting
+#the display information
+
+class Manny(Student):
+    pass
+manny2 = Manny("I")
+#This is used to have an ineritance to pass through and to output the information at a specific location.  It is passed we are only interested in getting
+#the display information
+
+class Lib (Librarian):
+    pass
+lib1 = Lib("L")
+#This is used to have an ineritance to pass through and to output the information at a specific location.  It is passed we are only interested in getting
+#the display information
+
+class Fee (__Fees):
+    pass
+fee1 = Fee("L")
+#This is used to have an ineritance to pass through and to output the information at a specific location.  It is passed we are only interested in getting
+#the display information
+
+class Book (Booklimit):
+    pass
+book1 = Book("L")
+#This is used to have an ineritance to pass through and to output the information at a specific location.  It is passed we are only interested in getting
+#the display information
+
+class Multiple (Books):
+    pass
+lib2 = Books ("L")
+#This is used to have an ineritance to pass through and to output the information at a specific location.  It is passed we are only interested in getting
+#the display information
+
+manager1.displayPerson()
+#This is to display this particle sub class that reverts back to the main class
+manny2.displayStudent()
+#This is to display this particle sub class that reverts back to the main class
+lib1.displayLibrarian()
+#This is to display this particle sub class that reverts back to the main class
+fee1.displayFees()
+#This is to display this particle sub class that reverts back to the main class
+book1.displayBooklimit()
+#This is to display this particle sub class that reverts back to the main class
+lib2.displayBooks()
+#This is to display this particle sub class that reverts back to the main classmanager1.displayPerson()
+#This is to display this particle sub class that reverts back to the main class
+manny2.displayStudent()
+#This is to display this particle sub class that reverts back to the main class
+lib1.displayLibrarian()
+#This is to display this particle sub class that reverts back to the main class
+fee1.displayFees()
+#This is to display this particle sub class that reverts back to the main class
+book1.displayBooklimit()
+#This is to display this particle sub class that reverts back to the main class
+lib2.displayBooks()
+#This is to display this particle sub class that reverts back to the main class
+
+
+class1 = Person("Jeremiah", "Cote")
+#This is to create in intance of Class 1
+class2 = Student("Yes",)
+#This is to create in intance of Class 2
+class3 = Librarian("E",)
+#This is to create in intance of Class 3
+class4 = Books("No")
+#This is to create in intance of Class 4
+class5 = Booklimit("No")
+#This is to create in intance of Class 5
+
+class1.displayPerson()
+#This is to call the instance of each class to display
+class2.displayStudent()
+#This is to call the instance of each class to display
+class3.displayLibrarian()
+#This is to call the instance of each class to display
+class4.displayBooks()
+#This is to call the instance of each class to display
+class5.displayBooklimit()
+#This is to call the instance of each class to display
+
+# Jeremiah Cote
+# User Id - 1
+# Assignment/Lab 5
+# Part B - Tic Tac Toe with classes
+# 13 July 2017
+
+import os
+#This is to import some os functions
+
+class Board():
+    #This is to make the board the object of this code by calling it a class of board
+    def __init__(self):
+        #This is to call to itself what the board will generally consist of
+        self.cells = [" ", " "," "," ", " ", " ", " ", " ", " ", " "]
+        #This is to create the board using spaces so that later we can fill in the spaces with either X's or O's
+
+    def display(self):
+        #This is to identify the function to display the object we created and then to have the components dispalyed as we please
+        print("%s | %s | %s " %(self.cells[1], self.cells[2], self.cells[3]))
+        #This is to have the first row broken up into cells
+        print("----------")
+        #This is to have a border seperating the first and second row
+        print("%s | %s | %s " %(self.cells[4], self.cells[5], self.cells[6]))
+        #This is to have the second row broken up into cells
+        print("----------")
+        #This is to have a border seperating the second and third row
+        print("%s | %s | %s " %(self.cells[7], self.cells[8], self.cells[9]))
+        #This is to have the third row broken up into cells
+
+
+    def update_cell(self, cell_no, player):
+        #This is a funciton used to call to self and to idenfty the player, so this way the board will continouse update on what the player inputs
+       if self.cells[cell_no] == " ":
+           #This is to populate only cells that are blanks and prevent replacing another's symbol with their own
+           self.cells[cell_no] = player
+            #This is to identify what and when this cell will be filled
+
+    def is_winner(self, player):
+        #This is to defince the function within the class that determines who wins the game
+        if self.cells[1]==player and self.cells[2]==player and self.cells[3]==player:
+            #This is to indicate if these cells are filled with a specific symobl then a winning condiditon exists
+           return True
+        #If this is correct then the return will be true indicatinga  winner condition
+        if self.cells[4]==player and self.cells[5]==player and self.cells[6]==player:
+            # This is to indicate if these cells are filled with a specific symobl then a winning condiditon exists
+            return True
+        #If this is correct then the return will be true indicatinga  winner condition
+        if self.cells[7]==player and self.cells[8]==player and self.cells[9]==player:
+            # This is to indicate if these cells are filled with a specific symobl then a winning condiditon exists
+            return True
+        #If this is correct then the return will be true indicatinga  winner condition
+        if self.cells[1]==player and self.cells[4]==player and self.cells[7]==player:
+            # This is to indicate if these cells are filled with a specific symobl then a winning condiditon exists
+            return True
+        #If this is correct then the return will be true indicatinga  winner condition
+        if self.cells[3]==player and self.cells[6]==player and self.cells[9]==player:
+            # This is to indicate if these cells are filled with a specific symobl then a winning condiditon exists
+            return True
+        #If this is correct then the return will be true indicatinga  winner condition
+        if self.cells[1]==player and self.cells[5]==player and self.cells[9]==player:
+            # This is to indicate if these cells are filled with a specific symobl then a winning condiditon exists
+            return True
+        #If this is correct then the return will be true indicatinga  winner condition
+        if self.cells[7]==player and self.cells[5]==player and self.cells[3]==player:
+            # This is to indicate if these cells are filled with a specific symobl then a winning condiditon exists
+            return True
+        #If this is correct then the return will be true indicatinga  winner condition
+
+    def reset(self):
+        #This is to reset the board if the game ends with a winner
+        self.cells = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+        #This is to call back the inital design of the board
+
+board = Board()
+#This is to call the board so that it can be reset and displayed
+
+def print_header():
+    #This is to input a header within the class to indicate a message to the user
+    print("Welcome to Tic-Tac-Toe\n")
+    #This is the output display on the screen to the user
+
+def refresh_screen():
+    #This is to refresh the board so that after every turn and input the board updates
+    print_header()
+    #This is to print the header
+    board.display()
+    #This is to display the new board
+
+while True:
+    #This is to indicate that while there is no winning condition the game continues
+    refresh_screen()
+    #This is to refresh the board
+    x_choice = int(input("\nPlayer 1). you are X's, to input your symbol please choose 1-9. > "))
+    #This is to have the input entered from player 1 or X's onto the baord
+    board.update_cell(x_choice, "X")
+    #This is to update the board with the player's choice
+    refresh_screen()
+    #This is to refresh the board
+    if board.is_winner("X"):
+        #This is a loop message that will dispaly if Player 1 wins
+        print("\nPlayer 1 wins!!!!")
+        #This is to display the winning message if player 1 wins
+        play_again = input("Would you like to play again?) (Y/N) > ").upper()
+        #This is to indicate if the users would like to play again apened with upper incase they enter an uppercase character
+        if play_again=="Y":
+            #This is a loop that if the users selecte yes the board is reset and game is played again
+            board.reset()
+            #This is to reset the borad
+            continue
+            #This is to continue with the loop until a break is determined
+        else:
+            #This is if the users chooses No instead of Yes
+            break
+            #This is the break in the loop to prevent the computer from continouing
+
+    o_choice = int(input("\nPLayer 2.) You are O's, to input your symbol PLease Choose 1-9. > "))
+    #This is to have the input entered from player 2 or O's onto the board
+    board.update_cell(o_choice, "O")
+    #This is to update the board with the player's choice
+    if board.is_winner("O"):
+        #This is a loop message that will dispaly if Player 2 wins
+        print("\nPLayer 2 wins!!!")
+        #This is to display the winning message if player 1 wins
+        play_again = input("Would you like to play again?) (Y/N) > ").upper()
+        #This is to indicate if the users would like to play again apened with upper incase they enter an uppercase character
+        if play_again == "Y":
+        #This is a loop that if the users selecte yes the board is reset and game is played again
+            board.reset()
+        #This is to reset the borad
+            continue
+        # This is to continue with the loop until a break is determined
+        else:
+            #This is if the users chooses No instead of Yes
+            break
+            #This is the break in the loop to prevent the computer from continouing
+
+
+b = Board()
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+b.update(1, 'X')
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+b.update(2, 'X')
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+b.update(3, 'X')
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+b.update(4, 'O')
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+b.update(5, 'O')
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+b.update(6, ' ')
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+b.update(7, ' ')
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+b.update(8, ' ')
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+b.update(9, ' ')
+#This is to create an instance of the board with preselected moves
+b.printBoard()
+#This is to create an instance of the board with preselected moves
+
+
+# Jeremiah Cote
+# User Id - 1
+# Assignment/Lab 5
+# Part C - Game of Life
+# 13 July 2017
+
+import sys
+import turtle
+import random
+
+CELL_SIZE = 10
+class LifeBoard:
+#This is to create the game of life board and class for it
+
+    def __init__(self, xsize, ysize):
+        #Create a new life game board
+        self.state = set()
+        #This sets the state of the life board
+        self.xsize, self.ysize = xsize, ysize
+    #this is to determine the board size
+
+    def is_legal(self, x, y):
+        #If the board is within legitimate sizes then this will yield a return true
+        return (0 <= x < self.xsize) and (0 <= y < self.ysize)
+        #As long as the board is not less than 0 then the board will be created to that particular size
+
+    def set(self, x, y):
+        #This allows a certain area to be a live area
+        if not self.is_legal(x, y):
+            #IF this is not a legitmate move this loop is called
+            raise ValueError("Coordinates {}, {} out of range 0..{}, 0..{}".format(
+                #This is to indicated that the coordinates are out of range and that the format is incorrect
+                x, y, self.xsize, self.ysize))
+                #This is to have the format called to reenter the value
+
+        key = (x, y)
+        #This is to indicate the key variable that will be called later to be used
+        self.state.add(key)
+        #This is to incorpate the key into the game
+
+    def makeRandom(self):
+        #This is to randomize the board for the game
+        self.erase()
+        #This is erase and always have a fresh randomized board
+        for i in range(0, self.xsize):
+            #This is to have the rows within a particluar call and size
+            for j in range(0, self.ysize):
+                #This is the loop for specific columns
+                if random.random() > 0.5:#This is to ranomized each row and colum greater than .5
+                    self.set(i, j)
+                #This set the randomized board
+
+    def toggle(self, x, y):
+        #This is to determine if the certain aera is considered dead or alive
+        if not self.is_legal(x, y):
+            #This loop is called if this area is not within a certain range
+            raise ValueError("Coordinates {}, {} out of range 0..{}, 0..{}".format(
+                # This is to indicated that the coordinates are out of range and that the format is incorrect
+                x, y, self.xsize, self.ysize))
+        # This is to have the format called to reenter the value
+        key = (x, y)
+        #This is to indicate the key variable that will be called later to be used
+        if key in self.state:
+            #If the key is called then this area is removed or added
+            self.state.remove(key)
+            #This is remove the specific area
+        else:
+            #This is to call the other condition of the loop
+            self.state.add(key)
+        #This is to add a specific area
+
+    def erase(self):
+        #This will erase the entire game
+        self.state.clear()
+        #This is to call to clear the enter state of the game
+
+    def step(self):
+        #This is for updating the generation
+        d = set()
+        for i in range(self.xsize):
+            x_range = range(max(0, i - 1), min(self.xsize, i + 2))
+            for j in range(self.ysize):
+                s = 0
+                live = ((i, j) in self.state)
+                for yp in range(max(0, j - 1), min(self.ysize, j + 2)):
+                    for xp in x_range:
+                        if (xp, yp) in self.state:
+                            s += 1
+                s -= live
+                if s == 3:
+                    #Thi is for birth
+                    d.add((i, j))
+                elif s == 2 and live:
+                    #This is for survival
+                    d.add((i, j))
+                elif live:
+                    #This is for the death
+                    pass
+
+        self.state = d
+    def draw(self, x, y):
+        turtle.penup()
+        key = (x, y)
+        if key in self.state:
+            turtle.setpos(x * CELL_SIZE, y * CELL_SIZE)
+            turtle.color('black')
+            turtle.pendown()
+            turtle.setheading(0)
+            turtle.begin_fill()
+            for i in range(4):
+                turtle.forward(CELL_SIZE - 1)
+                turtle.left(90)
+            turtle.end_fill()
+
+    def display(self):
+        turtle.clear()
+        for i in range(self.xsize):
+            for j in range(self.ysize):
+                self.draw(i, j)
+        turtle.update()
+
+
+def display_help_window():
+    from turtle import TK
+    root = TK.Tk()
+    frame = TK.Frame()
+    canvas = TK.Canvas(root, width=300, height=200, bg="white")
+    canvas.pack()
+    help_screen = turtle.TurtleScreen(canvas)
+    help_t = turtle.RawTurtle(help_screen)
+    help_t.penup()
+    help_t.hideturtle()
+    help_t.speed('fastest')
+
+    width, height = help_screen.screensize()
+    line_height = 20
+    y = height // 2 - 30
+    for s in ("Click on cells to make them alive or dead.",
+              "Keyboard commands:",
+              " E)rase the board",
+              " R)andom fill",
+              " S)tep once or",
+              " C)ontinuously -- use 'S' to resume stepping",
+              " Q)uit"):
+        help_t.setpos(-(width / 2), y)
+        help_t.write(s, font=('sans-serif', 14, 'normal'))
+        y -= line_height
+
+
+def main():
+    display_help_window()
+
+    scr = turtle.Screen()
+    turtle.mode('standard')
+    xsize, ysize = scr.screensize()
+    turtle.setworldcoordinates(0, 0, xsize, ysize)
+
+    turtle.hideturtle()
+    turtle.speed('fastest')
+    turtle.tracer(0, 0)
+    turtle.penup()
+
+    board = LifeBoard(xsize // CELL_SIZE, 1 + ysize // CELL_SIZE)
+
+    # Set up mouse bindings
+    def toggle(x, y):
+        cell_x = x // CELL_SIZE
+        cell_y = y // CELL_SIZE
+        if board.is_legal(cell_x, cell_y):
+            board.toggle(cell_x, cell_y)
+            board.display()
+
+    turtle.onscreenclick(turtle.listen)
+    turtle.onscreenclick(toggle)
+
+    board.makeRandom()
+    board.display()
+
+    def erase():
+        board.erase()
+        board.display()
+    turtle.onkey(erase, 'e')
+    def makeRandom():
+        board.makeRandom()
+        board.display()
+
+    turtle.onkey(makeRandom, 'r')
+    turtle.onkey(sys.exit, 'q')
+
+    continuous = False
+
+    def step_once():
+        nonlocal continuous
+        continuous = False
+        perform_step()
+
+    def step_continuous():
+        nonlocal continuous
+        continuous = True
+        perform_step()
+
+    def perform_step():
+        board.step()
+        board.display()
+        if continuous:
+            turtle.ontimer(perform_step, 25)
+
+    turtle.onkey(step_once, 's')
+    turtle.onkey(step_continuous, 'c')
+
+    turtle.listen()
+    turtle.mainloop()
+
+if __name__ == '__main__':
+    main()
