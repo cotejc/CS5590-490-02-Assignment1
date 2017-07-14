@@ -1,0 +1,448 @@
+<!--Jeremiah Cote
+User Id - 1
+Assignment/Lab 5 - Part A - You Tube Api
+13 July 2017-->
+
+<!DOCTYPE html>
+<!--This is to label the doc type-->
+<html lang="en">
+<!--This is to ensure the lanugage html is in-->
+    <head>
+        <!--This is to identify the head of the html page-->
+         <title>SearchVideos</title>
+        <!--This is the title of the page-->
+         <link rel = "stylesheet" href = "style.css">
+        <!--This is to use the style sheet in the html file-->
+         <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!--This is to use the google apis of youtube-->
+         <script src = "js.js"></script>
+        <!--This is to use the javascripte file into the html-->
+
+    </head>
+<!--This is to end the head portion of the html-->
+    <body>
+    <!--This is to start the body section of the HTMl-->
+       <div id = "container">
+           <!--This is to label the div element with an id contianer-->
+           <header>
+               <!--This is to use the header-->
+              <h1> Search <span>Videos</span> </h1>
+               <!--This is to se a heading and to seperate a portion of the element to have it a different color-->
+              <p>Search Youtube for music videos</p>
+               <!--This is the paragraph identifyin to the user what to do with the app-->
+           </header>
+           <!--This end the header-->
+           <section>
+               <!--This is to identify the section portion of the html-->
+               <form id ="search-form" name ="search-form" onsubmit="return search()">
+                   <!--This is to label the form section and to give id-->
+                  <div class="fieldcontainer">
+                      <!--This is the div element that has a class idntificaton-->
+                    <input type="search" id="query" class="search-field" placeholder="This is your input">
+                      <!--This is to have the input label something while it is waiting-->
+                    <input type="submit" name ="search-btn" id="search-btn" vaule="">
+                      <!--This is to identify the button to submit for the videos-->
+                  </div>
+                   <!--This is to end the div element-->
+               </form>
+               <!--This is to end the form of the html file-->
+
+               <ul id="results"></ul>
+               <!--This is to have the results listed here-->
+               <div id="buttons"></div>
+               <!--This is to have the button label here-->
+           </section>
+           <!--This is to end the section portion of the html page-->
+           <footer>
+               <!--This is to have a footer setion of the html page-->
+            <p>Assignment 5, Jeremiah Cote, User Id 1</p>
+               <!--This is to have the footer section have text-->
+           </footer>
+           <!--This is to have the footer section-->
+       </div>
+    <!--This is to end the div element-->
+    </body>
+<!--This is to end the body element-->
+</html>
+<!--This is to end the html file-->
+
+*{
+     padding:0;
+     margin:0;
+}
+
+body{
+    font-family: "Segoue", sans-sarif;
+    line-height: 1.6em;
+    color: #666;
+    background: #e1e1e1;
+    font-size:14px;
+}
+
+a{
+    color:#333;
+    text-decoration: none;
+}
+
+#contianer{
+    width:740px;
+    background:#fff;
+    margin:auto;
+}
+
+.clearfix{
+    clear: both;
+}
+
+header{
+    padding:30px 20px;
+    background: #f4f4f4;
+}
+
+header h1{
+    color:#000;
+    margin-bottom: 5px;
+
+}
+
+header span{
+      color:#dd2826;
+}
+
+section{
+       padding:30px 20px 20px 20px;
+
+}
+
+footer{
+    padding:20px;
+    background:#f4f4f4;
+    text-align:center;
+}
+
+#search-form{
+      display:block;
+      margin-bottom:15px;
+}
+
+.fieldcontainer{
+      dispaly:block;
+      position:relative;
+      width:90%;
+      margin:0 auto;
+}
+
+
+
+.search-field{
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    display:block;
+    width:45%;
+    padding:11px 7px;
+    padding-right:43px;
+    background:#fff;
+    color:#ccc;
+    border:1px solid #c8c8c8;
+    font-size:1.6em;
+    border-bottom-color: #d2e2e7;
+    -moz-border-radius:1px;
+    -webkit-border-radius:1px;
+    border-radius:1px;
+    -moz-box-shadow:inset 0 1px 2px rgba(0,0,0,0.1), 0 0 0 6px #f0f0f0;
+    -webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.1), 0 0 0 6px #f0f0f0;
+    box-shadow:inset 0 1px 2px rgba(0,0,0,0.1), 0 0 0 6px #f0f0f0;
+
+}
+
+#search-btn{
+    position:absolute;
+    right:360px;
+    top:5px;
+    height:32px;
+    width:32px;
+    border:0;
+    cursor:pointer;
+    zoom:1;
+    filter:alpha(opacity=65);
+    opactiy:0.65;
+    background:transparent url(../lab5/images/search.png) top left no-repeat;
+}
+
+#search-btn:hover{
+    filter:alpha(opacity=90);
+    opacity:0.9;
+}
+
+/**
+ * Created by Jeremiah on 7/10/2017.
+ */
+function search(){
+    $('#results').html('');
+    $('#buttons').html('');
+
+    q = $('#query').val();
+
+    $.get(
+        "https://www.googleapis.com/youtube/v3/search",{
+            part: 'snippet, id',
+            q: q,
+            type:'video',
+            key: 'AIzaSyBakU9BMsO_6CQsiJ9Lv1p3HkBOyUBJJa4'},
+            function(data){
+                var nextPageToken = data.nextPageToken;
+                var prevPageToken = data.prevPageToken;
+
+                console.log(data);
+
+                $.each(data.items, function(i, item) {
+                    var output = getOutput(item);
+
+                  $('#results').append(output);
+                })
+
+        }
+    );
+return output;
+}
+
+function getOutput(item){
+    var videoId = item.id.videoId;
+    var title = item.snippet.title;
+    var description = item.snippet.description;
+    var thumb = item.snippet.thumbnails.high.url;
+    var channelTitle = item.snippet.channelTitle;
+    var videoDate = item.snippet.publishedAt;
+
+    var output = '<li>'; +
+        '<div class="list-left">'+
+        '<img src="'+thumb+'">'+
+        '</div>'+
+        '</div class="list-right">' +
+        '<h3>'+title+'</h3>'
+        '<small>By<span class ="ctitle">'+channelTitle+'</span>on '+videoDate+'</small>' +
+        '<p>'+description+'</p>'+
+        '</div>'+
+        '</li>'+
+        '<div class = "clearfix"></div>'+
+        '';
+
+    return output;
+}
+
+<!--Jeremiah Cote
+User Id - 1
+Assignment/Lab 5 - Part B - Maps and Weather API
+13 July 2017-->
+<!DOCTYPE html>
+<!--This is to identify the tye of document this is-->
+<html lang="en">
+<!--This is to ensure the lanugage html is in-->
+<head>
+    <!--This is the head section of the html page-->
+    <title>Weather App based on location</title>
+    <!--This is to have the title of the html page-->
+    <link rel="stylesheet" href="build/css/style2.css">
+    <!--This is to use the style sheet in the html file-->
+    <script type="text/javascript" src="build/js/js2.js"></script>
+    <!--This is to use the javascript file-->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDPe_5UuDK4YnbIdaGodRrYaL7LkG9aS74"></script>
+    <!--This is to use the google map api-->
+
+</head>
+<!--This is to end the head section of the html page-->
+<body>
+<!--This is to have the body section of the html page-->
+<button id="locateUser">Get Location</button>
+<!--This is to identfy the button for getting location-->
+<div class="container">
+    <!--This is to have a div element with a class container-->
+    <div class="row">
+        <!--This is to have the div element with a class and row-->
+        <h1>Let's see what the weather is!</h1>
+        <!--This is to have the h1 heading for this-->
+        <label for="location">Enter a city name:</label>
+        <!--This is to identify the label for this element-->
+        <input id="location" type="text">
+        <!--This is for the input section to be identifyied-->
+        <button class="btn-success" id="weatherLocation">Get Current conditions</button>
+        <!--This is to identify the button section for this page-->
+    </div>
+    <!--This is to end the div element-->
+    <div class="row">
+        <!--This is to identify the div element with class and row-->
+        <div class="col-md-5">
+            <!--This is to have the div class identify with col-->
+            <ul>
+                <!--This is to have an unordered list of results-->
+                <div class="showWeather">
+                    <!--This is to show the weather-->
+                </div>
+                <!--This is to end the div element-->
+            </ul>
+            <!--This is to end the unorderlist section-->
+        </div>
+        <!--This is to end the div element-->
+        <div class="col-md-6">
+            <!--This is to have the div element identify in class-->
+            <ul id="map">
+                <!--This is to have the unordered lsit identify by the map feature-->
+
+            </ul>
+            <!--This is to end the unordered list-->
+        </div>
+        <!--This is to end the div element-->
+    </div>
+    <!--This is to end the div element-->
+</div>
+<!--This is to end the div element-->
+</div>
+<!--This is to end the div element-->
+</body>
+<!--This is to end the body element-->
+
+</html>
+<!--This is to end the html file-->
+
+/**
+ * Created by Jeremiah on 7/13/2017.
+ */
+
+var gulp = require('gulp');
+var browserify = require('browserify');
+var source =require('vinyl-source-stream');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var utilities = require('gulp-util');
+var del = require('del');
+var jshint = require('gulp-jshint');
+var browserSync = require('browser-sync').create();
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var git = require('gulp-git');
+var gitignore = require('gulp-gitignore');
+var fs = require('fs');
+var buildProduction = utilities.env.production;
+
+gulp.task('concatInterface', function() {
+    return gulp.src(['./js/*-interface.js'])
+        .pipe(concat('allConcat.js'))
+        .pipe(gulp.dest('./tmp'));
+});
+
+gulp.task('jsBrowserify', ['concatInterface'], function() {
+    return browserify({ entries: ['./tmp/allConcat.js'] })
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(gulp.dest('./build/js'));
+});
+
+gulp.task("minifyScripts", ["jsBrowserify"], function(){
+    return gulp.src("./build/js/app.js")
+        .pipe(uglify())
+        .pipe(gulp.dest("./build/js"));
+});
+
+gulp.task("clean", function(){
+    return del(['build', 'tmp']);
+});
+
+gulp.task('bowerJS', function() {
+    return gulp.src(lib.ext('js').files)
+        .pipe(concat('vendor.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./build/js'));
+});
+
+gulp.task('bowerCSS', function(){
+    return gulp.src(lib.ext('css').files)
+        .pipe(concat('vendor.css'))
+        .pipe(gulp.dest('./build/css'));
+});
+
+gulp.task('bower', ['bowerJS', 'bowerCSS']);
+
+gulp.task("build", ['clean'], function(){
+    if (buildProduction) {
+        gulp.start('minifyScripts');
+    } else {
+        gulp.start('jsBrowserify');
+    }
+    gulp.start('bower');
+    gulp.start('cssBuild')
+});
+
+gulp.task('jsBuild', ['jsBrowserify', 'jshint'], function() {
+    browserSync.reload();
+    gulp.start('gitStatus');
+});
+
+gulp.task('bowerBuild', ['bower'], function() {
+    browserSync.reload();
+    gulp.start('gitStatus');
+});
+
+gulp.task('htmlBuild', function() {
+    browserSync.reload();
+    gulp.start('gitStatus');
+});
+
+gulp.task('serve', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./",
+            index: "index.html"
+        }
+    });
+    gulp.watch(['js/*.js'], ['jsBuild']);
+    gulp.watch(['bower.json'], ['bowerBuild']);
+    gulp.watch(['*.html'], ['htmlBuild']);
+    gulp.watch("scss/*scss", ['cssBuild']);
+    gulp.watch("message.txt", ['gitCommit']);
+    gulp.watch(["*"], ["gitStatus"]);
+});
+
+gulp.task('jshint', function(){
+    return gulp.src(['js/*.js'])
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
+});
+
+gulp.task('cssBuild', function() {
+    return gulp.src('scss/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('./build/css'))
+        .pipe(browserSync.stream());
+});
+
+gulp.task('gitAdd', function(){
+    return gulp.src('./*')
+        .pipe(gitignore())
+        .pipe(git.add());
+});
+
+gulp.task('gitCommit', ['gitAdd'], function(){
+    var message = fs.readFileSync("./message.txt");
+    return gulp.src('./*')
+        .pipe(gitignore())
+        .pipe(git.commit(message, {
+            disableAppendPaths: true
+        }));
+});
+
+gulp.task('gitStatus', function() {
+    git.status({args: '--porcelain'}, function (err, stdout) {
+        if(err) throw err;
+    });
+});
+
+*{
+    padding:0;
+    margin:0;
+}
+

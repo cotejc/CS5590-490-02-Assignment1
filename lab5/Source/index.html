@@ -1,0 +1,67 @@
+<!--Jeremiah Cote
+User Id - 1
+Assignment/Lab 5 - Part A - You Tube Api
+13 July 2017-->
+
+<!DOCTYPE html>
+<!--This is to label the doc type-->
+<html lang="en">
+<!--This is to ensure the lanugage html is in-->
+    <head>
+        <!--This is to identify the head of the html page-->
+         <title>SearchVideos</title>
+        <!--This is the title of the page-->
+         <link rel = "stylesheet" href = "style.css">
+        <!--This is to use the style sheet in the html file-->
+         <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!--This is to use the google apis of youtube-->
+         <script src = "js.js"></script>
+        <!--This is to use the javascripte file into the html-->
+
+    </head>
+<!--This is to end the head portion of the html-->
+    <body>
+    <!--This is to start the body section of the HTMl-->
+       <div id = "container">
+           <!--This is to label the div element with an id contianer-->
+           <header>
+               <!--This is to use the header-->
+              <h1> Search <span>Videos</span> </h1>
+               <!--This is to se a heading and to seperate a portion of the element to have it a different color-->
+              <p>Search Youtube for music videos</p>
+               <!--This is the paragraph identifyin to the user what to do with the app-->
+           </header>
+           <!--This end the header-->
+           <section>
+               <!--This is to identify the section portion of the html-->
+               <form id ="search-form" name ="search-form" onsubmit="return search()">
+                   <!--This is to label the form section and to give id-->
+                  <div class="fieldcontainer">
+                      <!--This is the div element that has a class idntificaton-->
+                    <input type="search" id="query" class="search-field" placeholder="This is your input">
+                      <!--This is to have the input label something while it is waiting-->
+                    <input type="submit" name ="search-btn" id="search-btn" vaule="">
+                      <!--This is to identify the button to submit for the videos-->
+                  </div>
+                   <!--This is to end the div element-->
+               </form>
+               <!--This is to end the form of the html file-->
+
+               <ul id="results"></ul>
+               <!--This is to have the results listed here-->
+               <div id="buttons"></div>
+               <!--This is to have the button label here-->
+           </section>
+           <!--This is to end the section portion of the html page-->
+           <footer>
+               <!--This is to have a footer setion of the html page-->
+            <p>Assignment 5, Jeremiah Cote, User Id 1</p>
+               <!--This is to have the footer section have text-->
+           </footer>
+           <!--This is to have the footer section-->
+       </div>
+    <!--This is to end the div element-->
+    </body>
+<!--This is to end the body element-->
+</html>
+<!--This is to end the html file-->

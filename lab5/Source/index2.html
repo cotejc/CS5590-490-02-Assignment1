@@ -1,0 +1,73 @@
+<!--Jeremiah Cote
+User Id - 1
+Assignment/Lab 5 - Part B - Maps and Weather API
+13 July 2017-->
+<!DOCTYPE html>
+<!--This is to identify the tye of document this is-->
+<html lang="en">
+<!--This is to ensure the lanugage html is in-->
+<head>
+    <!--This is the head section of the html page-->
+    <title>Weather App based on location</title>
+    <!--This is to have the title of the html page-->
+    <link rel="stylesheet" href="build/css/style2.css">
+    <!--This is to use the style sheet in the html file-->
+    <script type="text/javascript" src="build/js/js2.js"></script>
+    <!--This is to use the javascript file-->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDPe_5UuDK4YnbIdaGodRrYaL7LkG9aS74"></script>
+    <!--This is to use the google map api-->
+
+</head>
+<!--This is to end the head section of the html page-->
+<body>
+<!--This is to have the body section of the html page-->
+<button id="locateUser">Get Location</button>
+<!--This is to identfy the button for getting location-->
+<div class="container">
+    <!--This is to have a div element with a class container-->
+    <div class="row">
+        <!--This is to have the div element with a class and row-->
+        <h1>Let's see what the weather is!</h1>
+        <!--This is to have the h1 heading for this-->
+        <label for="location">Enter a city name:</label>
+        <!--This is to identify the label for this element-->
+        <input id="location" type="text">
+        <!--This is for the input section to be identifyied-->
+        <button class="btn-success" id="weatherLocation">Get Current conditions</button>
+        <!--This is to identify the button section for this page-->
+    </div>
+    <!--This is to end the div element-->
+    <div class="row">
+        <!--This is to identify the div element with class and row-->
+        <div class="col-md-5">
+            <!--This is to have the div class identify with col-->
+            <ul>
+                <!--This is to have an unordered list of results-->
+                <div class="showWeather">
+                    <!--This is to show the weather-->
+                </div>
+                <!--This is to end the div element-->
+            </ul>
+            <!--This is to end the unorderlist section-->
+        </div>
+        <!--This is to end the div element-->
+        <div class="col-md-6">
+            <!--This is to have the div element identify in class-->
+            <ul id="map">
+                <!--This is to have the unordered lsit identify by the map feature-->
+
+            </ul>
+            <!--This is to end the unordered list-->
+        </div>
+        <!--This is to end the div element-->
+    </div>
+    <!--This is to end the div element-->
+</div>
+<!--This is to end the div element-->
+</div>
+<!--This is to end the div element-->
+</body>
+<!--This is to end the body element-->
+
+</html>
+<!--This is to end the html file-->
