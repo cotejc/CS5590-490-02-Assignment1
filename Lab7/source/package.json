@@ -1,0 +1,70 @@
+{
+  "name": "Jeremiah Cote",
+  "value": 5.5,
+  "type": "",
+  "level": "Blue",
+  "children": [
+    {
+      "name": "University of Missouri System - Kansas City",
+      "value": 4,
+      "type": "grey",
+      "level": "red",
+      "children": [
+        {
+          "name": "Electrical Engineering",
+          "value": 6,
+          "type": "steelblue",
+          "level": "orange"
+        },
+        {
+          "name": "Physics",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        },
+    {
+      "name": "Air Force",
+      "value": 4,
+      "type": "grey",
+      "level": "green",
+      "children": [
+        {
+          "name": "Active Duty",
+          "value": 6,
+          "type": "steelblue",
+          "level": "orange"
+        },
+        {
+          "name": "Air National Guard",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        },
+    {
+      "name": "Family",
+      "value": 4,
+      "type": "grey",
+      "level": "green",
+      "children": [
+        {
+          "name": "Alicia",
+          "value": 6,
+          "type": "steelblue",
+          "level": "orange"
+        },
+        {
+          "name": "Callie",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        },
+        {
+          "name": "Aelius",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        }
+
+        }
+      }
+      }

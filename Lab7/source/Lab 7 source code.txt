@@ -1,0 +1,403 @@
+<!--Jeremiah Cote
+User Id - 1
+Lab/Assignment 7 - Twitter api bubble/personal data
+27 july 2017-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        *{
+         font-family: "Helvetica Neue";
+        }
+        p, text{
+            font-size: 0.85em;
+        }
+        svg{
+            background:#f1f1f1;
+        }
+    </style>
+    <title>Interactive Bubble Chart</title>
+</head>
+<body>
+     <div id = "chart"></div>
+     <script scr = "https://cdnjs.cloudeflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+     <script src = "bubbles.js"></script>
+</body>
+</html>
+$('submit').click(function(){
+
+    var search_term = {
+        q:'bowery'
+    };
+    search(search_term);
+
+});
+
+function search(search_term){
+    console.log('searching for ');
+    console.dir(search_term);
+
+    $.ajax({
+        url : 'http//search.twitter.com/search.json?' + $.param(search_term),
+        dataType: 'jsonp',
+        success: function(data) {
+            console.dir(data);
+
+        }
+    });
+}
+(function() {
+    var width = 500;
+    height = 500;
+
+    var svg = ds.select("#chart")
+        .append("svg")
+        .attr("height", height)
+        .attr("width", width)
+        .append("g")
+        .attr("transform", "translate(0,)")
+    var radiusScale = d3.scaleSqrt().domain([1,1000]).range([10, 100])
+
+    var simulation = ds.forceSim()
+        .force("x", d3.forcex(0), strength(0.05))
+        .force("y", d3.forcex(0), strength(0.05))
+        .force("collide", d3.forceCollide(function(d) {
+            return radiusScale(d.trends);
+        }))
+    d3.queue()
+        .defer(d3.csv, "trends.csv")
+        .await(ready)
+
+    function ready(error, datapoints) {
+        var circles = svg.selectAll(".trends")
+            .data(datapoints)
+            .enter().append("circle")
+            .attr("class", "artist")
+            .attr("r", function(d){
+                return radiusScale(d.trends)
+            })
+            .attr("fill", "lightblue")
+        simulation.nodes(datapoints)
+
+        function ticked() {
+            circles
+                .attr("cx", function (d) {
+                    return d.x
+                })
+                .attr("cy", function (d) {
+                })
+        }
+    }
+}());
+
+{
+  "name": "Jeremiah Cote",
+  "value": 5.5,
+  "type": "",
+  "level": "Blue",
+  "children": [
+    {
+      "name": "University of Missouri System - Kansas City",
+      "value": 4,
+      "type": "grey",
+      "level": "red",
+      "children": [
+        {
+          "name": "Electrical Engineering",
+          "value": 6,
+          "type": "steelblue",
+          "level": "orange"
+        },
+        {
+          "name": "Physics",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        },
+    {
+      "name": "Air Force",
+      "value": 4,
+      "type": "grey",
+      "level": "green",
+      "children": [
+        {
+          "name": "Active Duty",
+          "value": 6,
+          "type": "steelblue",
+          "level": "orange"
+        },
+        {
+          "name": "Air National Guard",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        },
+    {
+      "name": "Family",
+      "value": 4,
+      "type": "grey",
+      "level": "green",
+      "children": [
+        {
+          "name": "Alicia",
+          "value": 6,
+          "type": "steelblue",
+          "level": "orange"
+        },
+        {
+          "name": "Callie",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        },
+        {
+          "name": "Aelius",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        }
+        
+        }
+      }
+      }
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style type="text/css">
+
+    #treecontainer svg {
+        overflow: visible;
+    }
+    #treecontainerDetalle{
+        border:1px solid black;
+    }
+
+    .node {
+        cursor: pointer;
+    }
+
+    .overlay{
+    // background-color:#FFF;
+    }
+
+    .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+    .node text {
+        font-size:10px;
+        font-family:sans-serif;
+    }
+
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1.5px;
+    }
+
+    .templink {
+        fill: none;
+        stroke: red;
+        stroke-width: 3px;
+    }
+
+
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="tree.js"></script>
+<script src="dndTree.js"></script>
+<body>
+<div id="treecontainer"></div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style type="text/css">
+
+    #treecontainer svg {
+        overflow: visible;
+    }
+    #treecontainerDetalle{
+        border:1px solid black;
+    }
+
+    .node {
+        cursor: pointer;
+    }
+
+    .overlay{
+    // background-color:#FFF;
+    }
+
+    .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+    .node text {
+        font-size:10px;
+        font-family:sans-serif;
+    }
+
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1.5px;
+    }
+
+    .templink {
+        fill: none;
+        stroke: red;
+        stroke-width: 3px;
+    }
+
+
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="tree.js"></script>
+<script src="dndTree.js"></script>
+<body>
+<div id="treecontainer"></div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style type="text/css">
+
+    #treecontainer svg {
+        overflow: visible;
+    }
+    #treecontainerDetalle{
+        border:1px solid black;
+    }
+
+    .node {
+        cursor: pointer;
+    }
+
+    .overlay{
+    // background-color:#FFF;
+    }
+
+    .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+    .node text {
+        font-size:10px;
+        font-family:sans-serif;
+    }
+
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1.5px;
+    }
+
+    .templink {
+        fill: none;
+        stroke: red;
+        stroke-width: 3px;
+    }
+
+
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="tree.js"></script>
+<script src="dndTree.js"></script>
+<body>
+<div id="treecontainer"></div>
+
+</body>
+</html>
+{
+  "name": "Jeremiah Cote",
+  "value": 5.5,
+  "type": "",
+  "level": "Blue",
+  "children": [
+    {
+      "name": "University of Missouri System - Kansas City",
+      "value": 4,
+      "type": "grey",
+      "level": "red",
+      "children": [
+        {
+          "name": "Electrical Engineering",
+          "value": 6,
+          "type": "steelblue",
+          "level": "orange"
+        },
+        {
+          "name": "Physics",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        },
+    {
+      "name": "Air Force",
+      "value": 4,
+      "type": "grey",
+      "level": "green",
+      "children": [
+        {
+          "name": "Active Duty",
+          "value": 6,
+          "type": "steelblue",
+          "level": "orange"
+        },
+        {
+          "name": "Air National Guard",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        },
+    {
+      "name": "Family",
+      "value": 4,
+      "type": "grey",
+      "level": "green",
+      "children": [
+        {
+          "name": "Alicia",
+          "value": 6,
+          "type": "steelblue",
+          "level": "orange"
+        },
+        {
+          "name": "Callie",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        },
+        {
+          "name": "Aelius",
+          "value": 6,
+          "type": "steelblue",
+          "level": "red"
+        }
+
+        }
+      }
+      }
+
+	  treeJSON = d3.json("package.json", function(error, treeData) {
+
+    createTree(treeData,"#treecontainerDetalle",false);
+    createTree(treeData,"#treecontainer",true);
+
+
+});/**
+ * Created by Jeremiah on 7/21/2017.
+ */
